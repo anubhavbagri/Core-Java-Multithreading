@@ -1,25 +1,38 @@
+class Hello extends Thread {
+    @Override
+    public void run() {
+        try {
+            while (true) {
+                System.out.println("Hello");
+                // Thread.sleep(1000);
+            }
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+    }
+}
+
+class Bye extends Thread {
+    @Override
+    public void run() {
+        try {
+            while (true) {
+                System.out.println("Bye");
+                // Thread.sleep(1000);
+            }
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+    }
+}
+
 public class Multithreading {
-
-    public static void hello() throws Exception {
-        while (true) {
-            System.out.println("Hello");
-            Thread.sleep(1000);
-        }
+    public static void multithreading() {
+        new Hello().start();
+        new Bye().start();
     }
 
-    public static void bye() throws Exception {
-        while (true) {
-            System.out.println("Bye");
-            Thread.sleep(2000);
-        }
-    }
-
-    public static void multithreading() throws Exception {
-        hello();
-        bye();
-    }
-
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         multithreading();
     }
 }
