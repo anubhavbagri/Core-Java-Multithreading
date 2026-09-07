@@ -1,1 +1,63 @@
-# Core Java GÇö Multithreading & Java 8 ConceptsA hands-on practice repo for Core Java fundamentals, covering **OOP**, **Multithreading**, and **Java 8** features GÇö structured using standard Java package conventions (`com.java8.*`) and runnable directly via `javac` in the terminal (VSCode-friendly, no build tool required).---## =ƒôü Project Structure```./GööGöÇGöÇ com/    GööGöÇGöÇ java8/        Gö£GöÇGöÇ MyMain.java                          # Entry point GÇö swap imports to run different examples        Gö£GöÇGöÇ classobject/        Göé   GööGöÇGöÇ MyClassObject.java               # OOP: encapsulation, constructors, toString        GööGöÇGöÇ multithreading/            GööGöÇGöÇ MultithreadingUsingSynchronized.java  # Odd/even printing using synchronized + wait/notify```---## Gû¦n+Å How to Run (VSCode Terminal / `javac`)From the **repo root** (wherever you cloned this repo):```bash# 1. Compile all Java filesjavac -d . com/java8/MyMain.java com/java8/classobject/MyClassObject.java com/java8/multithreading/MultithreadingUsingSynchronized.java# 2. Run the entry pointjava com.java8.MyMain```> **Tip:** The `-d .` flag outputs `.class` files into the correct package directory structure automatically.---## =ƒôÜ Topics Covered| Topic | File | Concept ||-------|------|---------|| OOP / Class & Object | `classobject/MyClassObject.java` | Encapsulation, constructors, getter/setter, `toString()` || Multithreading | `multithreading/MultithreadingUsingSynchronized.java` | `synchronized` block, `wait()`, `notify()`, odd-even thread coordination |---## =ƒöû Branch Strategy| Branch | Purpose ||--------|---------|| `master` | Active development GÇö latest code || `stable` | Stable snapshots (archived versions for reference) |> Use `git log --oneline` to browse commit history and revisit earlier implementations.---## =ƒ¢án+Å Environment- **Language:** Java 8+- **Editor:** VSCode (lightweight, no IDE overhead)- **Compiler:** `javac` via terminal- **Version Control:** Git + GitHub
+ï»¿# Core Java Î“Ã‡Ã¶ Multithreading & Java 8 Concepts
+
+A hands-on practice repo for Core Java fundamentals, covering **OOP**, **Multithreading**, and **Java 8** features Î“Ã‡Ã¶ structured using standard Java package conventions (`com.java8.*`) and runnable directly via `javac` in the terminal (VSCode-friendly, no build tool required).
+
+---
+
+## â‰¡Æ’Ã´Ã¼ Project Structure
+
+```
+./
+Î“Ã¶Ã¶Î“Ã¶Ã‡Î“Ã¶Ã‡ com/
+    Î“Ã¶Ã¶Î“Ã¶Ã‡Î“Ã¶Ã‡ java8/
+        Î“Ã¶Â£Î“Ã¶Ã‡Î“Ã¶Ã‡ MyMain.java                          # Entry point Î“Ã‡Ã¶ swap imports to run different examples
+        Î“Ã¶Â£Î“Ã¶Ã‡Î“Ã¶Ã‡ classobject/
+        Î“Ã¶Ã©   Î“Ã¶Ã¶Î“Ã¶Ã‡Î“Ã¶Ã‡ MyClassObject.java               # OOP: encapsulation, constructors, toString
+        Î“Ã¶Ã¶Î“Ã¶Ã‡Î“Ã¶Ã‡ multithreading/
+            Î“Ã¶Ã¶Î“Ã¶Ã‡Î“Ã¶Ã‡ MultithreadingUsingSynchronized.java  # Odd/even printing using synchronized + wait/notify
+```
+
+---
+
+## Î“Ã»â•¢âˆ©â••Ã… How to Run (VSCode Terminal / `javac`)
+
+From the **repo root** (wherever you cloned this repo):
+
+```bash
+# 1. Compile all Java files
+javac -d . com/java8/MyMain.java com/java8/classobject/MyClassObject.java com/java8/multithreading/MultithreadingUsingSynchronized.java
+
+# 2. Run the entry point
+java com.java8.MyMain
+```
+
+> **Tip:** The `-d .` flag outputs `.class` files into the correct package directory structure automatically.
+
+---
+
+## â‰¡Æ’Ã´Ãœ Topics Covered
+
+| Topic | File | Concept |
+|-------|------|---------|
+| OOP / Class & Object | `classobject/MyClassObject.java` | Encapsulation, constructors, getter/setter, `toString()` |
+| Multithreading | `multithreading/MultithreadingUsingSynchronized.java` | `synchronized` block, `wait()`, `notify()`, odd-even thread coordination |
+
+---
+
+## â‰¡Æ’Ã¶Ã» Branch Strategy
+
+| Branch | Purpose |
+|--------|---------|
+| `master` | Active development Î“Ã‡Ã¶ latest code |
+| `stable` | Stable snapshots (archived versions for reference) |
+
+> Use `git log --oneline` to browse commit history and revisit earlier implementations.
+
+---
+
+## â‰¡Æ’Â¢Ã¡âˆ©â••Ã… Environment
+
+- **Language:** Java 8+
+- **Editor:** VSCode (lightweight, no IDE overhead)
+- **Compiler:** `javac` via terminal
+- **Version Control:** Git + GitHub
