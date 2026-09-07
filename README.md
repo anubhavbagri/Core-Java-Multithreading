@@ -39,13 +39,6 @@ java com.java8.MyMain
 | OOP / Class & Object | `classobject/MyClassObject.java` | Encapsulation, constructors, getter/setter, `toString()` |
 | Multithreading | `multithreading/MultithreadingUsingSynchronized.java` | `synchronized` block, `wait()`, `notify()`, odd-even thread coordination |
 
-## 🔀 Branch Strategy
-
-| Branch | Purpose |
-|--------|---------|
-| `master` | Active development — latest code |
-| `stable` | Stable snapshots (archived versions for reference) |
-
 ## 🛠️ Environment
 
 - **Language:** Java 8+
