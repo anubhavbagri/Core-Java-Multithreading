@@ -1,7 +1,7 @@
 ﻿package com.java8;
 
 // import com.java8.classobject.MyClassObject;
-import com.java8.multithreading.MultithreadingUsingSynchronized;
+import com.java8.multithreading.Multithreading;
 
 public class MyMain {
     public static void main(String[] args) {
@@ -10,6 +10,6 @@ public class MyMain {
         // System.out.println(obj);
         // System.out.println(obj.getName());
 
-        new MultithreadingUsingSynchronized().multithreading();
+        new Multithreading().multithreading();
     }
 }

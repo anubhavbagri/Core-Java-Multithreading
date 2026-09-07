@@ -1,6 +1,8 @@
 package com.java8.multithreading;
 
-public class MultithreadingUsingSynchronized {
+// using synchronized, wait and notify
+
+public class Multithreading {
     boolean flag = true;
     int limit = 10;
 
@@ -16,13 +18,13 @@ public class MultithreadingUsingSynchronized {
 
         Thread th1 = new Thread(() -> {
             for (int i = 1; i <= limit; i += 2)
-                synchronized (MultithreadingUsingSynchronized.class) {
+                synchronized (Multithreading.class) {
                     try {
                         while (!getFlag())
-                            MultithreadingUsingSynchronized.class.wait();
+                            Multithreading.class.wait();
                         System.out.println(i + " odd");
                         setFlag(false);
-                        MultithreadingUsingSynchronized.class.notify();
+                        Multithreading.class.notify();
                     } catch (Exception e) {
                     }
                 }
@@ -30,13 +32,13 @@ public class MultithreadingUsingSynchronized {
 
         Thread th2 = new Thread(() -> {
             for (int i = 2; i <= limit; i += 2)
-                synchronized (MultithreadingUsingSynchronized.class) {
+                synchronized (Multithreading.class) {
                     try {
                         while (getFlag())
-                            MultithreadingUsingSynchronized.class.wait();
+                            Multithreading.class.wait();
                         System.out.println(i + " even");
                         setFlag(true);
-                        MultithreadingUsingSynchronized.class.notify();
+                        Multithreading.class.notify();
                     } catch (Exception e) {
                     }
                 }
@@ -44,9 +46,5 @@ public class MultithreadingUsingSynchronized {
 
         th1.start();
         th2.start();
-    }
-
-    public static void main(String[] args) {
-        new MultithreadingUsingSynchronized().multithreading();
     }
 }
