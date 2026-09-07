@@ -1,25 +1,23 @@
-﻿# Core Java ΓÇö Multithreading & Java 8 Concepts
+# Core Java & Multithreading
 
-A hands-on practice repo for Core Java fundamentals, covering **OOP**, **Multithreading**, and **Java 8** features ΓÇö structured using standard Java package conventions (`com.java8.*`) and runnable directly via `javac` in the terminal (VSCode-friendly, no build tool required).
+A hands-on practice repo for Core Java fundamentals, covering **OOP**, **Multithreading**, and **Java 8** features — structured using standard Java package conventions (`com.java8.*`) and runnable directly via `javac` in the terminal (VSCode-friendly, no build tool required).
 
----
 
-## ≡ƒôü Project Structure
+## 📁 Project Structure
 
 ```
 ./
-ΓööΓöÇΓöÇ com/
-    ΓööΓöÇΓöÇ java8/
-        Γö£ΓöÇΓöÇ MyMain.java                          # Entry point ΓÇö swap imports to run different examples
-        Γö£ΓöÇΓöÇ classobject/
-        Γöé   ΓööΓöÇΓöÇ MyClassObject.java               # OOP: encapsulation, constructors, toString
-        ΓööΓöÇΓöÇ multithreading/
-            ΓööΓöÇΓöÇ MultithreadingUsingSynchronized.java  # Odd/even printing using synchronized + wait/notify
+└── com/
+    └── java8/
+        ├── MyMain.java                          # Entry point — swap imports to run different examples
+        ├── classobject/
+        │   └── MyClassObject.java               # OOP: encapsulation, constructors, toString
+        └── multithreading/
+            └── MultithreadingUsingSynchronized.java  # Odd/even printing using synchronized + wait/notify
 ```
 
----
 
-## Γû╢∩╕Å How to Run (VSCode Terminal / `javac`)
+## ⚡ How to Run (VSCode Terminal / `javac`)
 
 From the **repo root** (wherever you cloned this repo):
 
@@ -33,29 +31,22 @@ java com.java8.MyMain
 
 > **Tip:** The `-d .` flag outputs `.class` files into the correct package directory structure automatically.
 
----
 
-## ≡ƒôÜ Topics Covered
+## 📚 Topics Covered
 
 | Topic | File | Concept |
 |-------|------|---------|
 | OOP / Class & Object | `classobject/MyClassObject.java` | Encapsulation, constructors, getter/setter, `toString()` |
 | Multithreading | `multithreading/MultithreadingUsingSynchronized.java` | `synchronized` block, `wait()`, `notify()`, odd-even thread coordination |
 
----
-
-## ≡ƒöû Branch Strategy
+## 🔀 Branch Strategy
 
 | Branch | Purpose |
 |--------|---------|
-| `master` | Active development ΓÇö latest code |
+| `master` | Active development — latest code |
 | `stable` | Stable snapshots (archived versions for reference) |
 
-> Use `git log --oneline` to browse commit history and revisit earlier implementations.
-
----
-
-## ≡ƒ¢á∩╕Å Environment
+## 🛠️ Environment
 
 - **Language:** Java 8+
 - **Editor:** VSCode (lightweight, no IDE overhead)
