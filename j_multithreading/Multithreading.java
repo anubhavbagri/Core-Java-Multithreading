@@ -9,7 +9,7 @@ public class Multithreading {
     public static boolean flag = true;
     public static int limit = 10;
 
-    static class Odd implements Runnable {
+    static class Odd extends Thread {
         @Override
         public void run() {
             for (int i = 1; i <= limit; i += 2)
@@ -26,7 +26,7 @@ public class Multithreading {
         }
     }
 
-    static class Even implements Runnable {
+    static class Even extends Thread {
         @Override
         public void run() {
             for (int i = 2; i <= limit; i += 2)
@@ -45,11 +45,9 @@ public class Multithreading {
 
     public static void multithreading() {
         Odd odd = new Odd();
-        Thread th1 = new Thread(odd);
-        th1.start();
+        odd.start();
 
         Even even = new Even();
-        Thread th2 = new Thread(even);
-        th2.start();
+        even.start();
     }
 }
