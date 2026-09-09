@@ -8,7 +8,7 @@ package j_multithreading;
 public class Multithreading {
     public static boolean flag = true;
 
-    static class Hello extends Thread {
+    static class Hello implements Runnable {
         @Override
         public void run() {
             while (true)
@@ -25,7 +25,7 @@ public class Multithreading {
         }
     }
 
-    static class Bye extends Thread {
+    static class Bye implements Runnable {
         @Override
         public void run() {
             while (true)
@@ -43,7 +43,12 @@ public class Multithreading {
     }
 
     public static void multithreading() {
-        new Hello().start();
-        new Bye().start();
+        Hello hello = new Hello();
+        Thread th1 = new Thread(hello);
+        th1.start();
+
+        Bye bye = new Bye();
+        Thread th2 = new Thread(bye);
+        th2.start();
     }
 }
