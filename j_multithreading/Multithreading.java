@@ -1,5 +1,10 @@
 package j_multithreading;
 
+// if there's no time based controlling & we remove Thread.sleep()
+// we observe that hello & bye are printed randomly: unsynchronized
+// It depends on the OS which thread would be picked first
+// Thread's execution is beyond our control here
+
 class Hello implements Runnable {
     @Override
     public void run() {
@@ -7,7 +12,7 @@ class Hello implements Runnable {
         try {
             while (true) {
                 System.out.println("Hello");
-                Thread.sleep(1000);
+                // Thread.sleep(1000);
             }
         } catch (Exception e) {
         }
@@ -21,7 +26,7 @@ class Bye implements Runnable {
         try {
             while (true) {
                 System.out.println("Bye");
-                Thread.sleep(1000);
+                // Thread.sleep(1000);
             }
         } catch (Exception e) {
         }
