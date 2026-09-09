@@ -1,53 +1,49 @@
 package j_multithreading;
 
-// if there's no time based controlling & we remove Thread.sleep()
-// we observe that hello & bye are printed randomly: unsynchronized
-// It depends on the OS which thread would be picked first
-// Thread's execution is beyond our control here
-
-class Hello implements Runnable {
-    @Override
-    public void run() {
-        System.out.println(Thread.currentThread().getName());
-        try {
-            while (true) {
-                System.out.println("Hello");
-                // Thread.sleep(1000);
-            }
-        } catch (Exception e) {
-        }
-    }
-}
-
-class Bye implements Runnable {
-    @Override
-    public void run() {
-        System.out.println(Thread.currentThread().getName());
-        try {
-            while (true) {
-                System.out.println("Bye");
-                // Thread.sleep(1000);
-            }
-        } catch (Exception e) {
-        }
-    }
-}
+// Here the output is synchronized i.e. alternatively displaying hello then bye
+// synchronized makes sure that thread cannot run both the blocks simultaneously, only one at a time
+// boolean flag controls the alternate behaviour
+// lock - unlock - signalling
 
 public class Multithreading {
+    public static boolean flag = true;
+
+    static class Hello extends Thread {
+        @Override
+        public void run() {
+            while (true)
+                synchronized (Multithreading.class) {
+                    try {
+                        while (!flag)
+                            Multithreading.class.wait();
+                        System.out.println("Hello");
+                        flag = false;
+                        Multithreading.class.notify();
+                    } catch (Exception e) {
+                    }
+                }
+        }
+    }
+
+    static class Bye extends Thread {
+        @Override
+        public void run() {
+            while (true)
+                synchronized (Multithreading.class) {
+                    try {
+                        while (flag)
+                            Multithreading.class.wait();
+                        System.out.println("Bye");
+                        flag = true;
+                        Multithreading.class.notify();
+                    } catch (Exception e) {
+                    }
+                }
+        }
+    }
 
     public static void multithreading() {
-        // create an instance of class that implement 'Runnable'
-        Hello hello = new Hello();
-
-        // pass the runnable obj to the thread constructor
-        Thread th1 = new Thread(hello);
-
-        // start the thread
-        th1.start();
-
-        Bye bye = new Bye();
-        Thread th2 = new Thread(bye);
-
-        th2.start();
+        new Hello().start();
+        new Bye().start();
     }
 }
