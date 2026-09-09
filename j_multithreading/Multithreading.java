@@ -1,22 +1,37 @@
 package j_multithreading;
 
+class Hello extends Thread {
+    @Override
+    public void run() {
+        System.out.println(Thread.currentThread().getName());
+        try {
+            while (true) {
+                System.out.println("Hello");
+                Thread.sleep(1000);
+            }
+        } catch (Exception e) {
+        }
+    }
+}
+
+class Bye extends Thread {
+    @Override
+    public void run() {
+        System.out.println(Thread.currentThread().getName());
+        try {
+            while (true) {
+                System.out.println("Bye");
+                Thread.sleep(2000);
+            }
+        } catch (Exception e) {
+        }
+    }
+}
+
 public class Multithreading {
 
-    public static void hello() throws Exception{
-        while(true){
-            System.out.println("Hello");
-            Thread.sleep(1000);
-        }
-    }
-
-    public static void bye() throws Exception{
-        while(true){
-            System.out.println("Bye");
-            Thread.sleep(2000);
-        }
-    }
-    public static void multithreading() throws Exception {
-        hello();
-        bye();
+    public static void multithreading() {
+        new Hello().start();
+        new Bye().start();
     }
 }
