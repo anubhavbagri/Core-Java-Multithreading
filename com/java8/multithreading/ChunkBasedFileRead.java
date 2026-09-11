@@ -23,6 +23,32 @@ public class ChunkBasedFileRead {
     // }
     // }
 
+    public static long singleThreadedRead(String filename) throws IOException {
+        System.out.println("\n--- Single Threaded Read ---");
+        long start = System.nanoTime();
+
+        // Read entire file into byte array
+        File file = new File(filename);
+        RandomAccessFile raf = new RandomAccessFile(file, "r");
+        byte[] buffer = new byte[(int) raf.length()];
+        raf.read(buffer);
+        raf.close();
+
+        // Same split logic as multithreaded
+        String content = new String(buffer);
+        String[] words = content.split("\\s+");
+
+        int totalWords = words.length;
+
+        long end = System.nanoTime();
+        long durationMs = (end - start) / 1_000_000;
+
+        System.out.println("Total Words: " + totalWords);
+        System.out.println("Time: " + durationMs + " ms\n");
+
+        return durationMs;
+    }
+
     public static long multiThreadedRead(String filename, int numThreads) throws IOException {
         long startTime = System.nanoTime();
 
@@ -101,16 +127,20 @@ public class ChunkBasedFileRead {
         String filename = "sample.txt";
         // generateLargeFile("sample.txt", 1);
 
+        long singleTime = singleThreadedRead(filename);
+
         long multiTime2 = multiThreadedRead(filename, 2);
         long multiTime4 = multiThreadedRead(filename, 4);
         long multiTime8 = multiThreadedRead(filename, 8);
 
         // Compare
         System.out.println("\n========= PERFORMANCE COMPARISON =========");
-
+        System.out.println("Single thread:  " + singleTime + " ms");
         System.out.println("2 threads:      " + multiTime2 + " ms");
         System.out.println("4 threads:      " + multiTime4 + " ms");
         System.out.println("8 threads:      " + multiTime8 + " ms");
 
+        // int cores = Runtime.getRuntime().availableProcessors();
+        // System.out.println("Available cores: " + cores);
     }
 }
