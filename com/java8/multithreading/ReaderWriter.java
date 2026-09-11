@@ -46,6 +46,8 @@ public class ReaderWriter {
         Thread w1 = new Thread(() -> rw.write("Writer-1", 100));
         Thread w2 = new Thread(() -> rw.write("Writer-2", 200));
 
+        long start = System.nanoTime();
+
         r1.start();
         r2.start();
         r3.start();
@@ -61,6 +63,8 @@ public class ReaderWriter {
         } catch (Exception e) {
         }
 
+        long ms = (System.nanoTime() - start) / 1_000_000;
+        System.out.println("\nReadWriteLock total time: " + ms + " ms\n");
     }
 
     public static void main(String[] args) {
