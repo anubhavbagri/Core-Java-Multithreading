@@ -10,46 +10,20 @@ Hint: The sequence doesn't matter, reading faster is important
 
 public class ChunkBasedFileRead {
 
-    // public static void generateLargeFile(String filename, long sizeInMB) {
-    // try (BufferedOutputStream out = new BufferedOutputStream(new
-    // FileOutputStream(filename))) {
-
-    // byte[] data = "The quick brown fox jumped over the lazy dog ".getBytes();
-
-    // long targetBytes = sizeInMB * 1024 * 1024;
-    // long writtenBytes = 0;
-
-    // while (writtenBytes < targetBytes) {
-    // out.write(data);
-    // writtenBytes += data.length;
-    // }
-    // } catch (IOException e) {
-
-    // }
-    // }
-
     public static long singleThreadedRead(String filename) throws IOException {
         System.out.println("\n--- Single Threaded Read ---");
         long start = System.nanoTime();
 
-        // Read entire file into byte array
-        File file = new File(filename);
-        RandomAccessFile raf = new RandomAccessFile(file, "r");
+        RandomAccessFile raf = new RandomAccessFile(filename, "r");
         byte[] buffer = new byte[(int) raf.length()];
         raf.read(buffer);
         raf.close();
 
-        // Same split logic as multithreaded
         String content = new String(buffer);
-        String[] words = content.split("\\s+");
-
-        int totalWords = words.length;
+        System.out.println(content);
 
         long end = System.nanoTime();
         long durationMs = (end - start) / 1_000_000;
-
-        System.out.println("Total Words: " + totalWords);
-        System.out.println("Time: " + durationMs + " ms\n");
 
         return durationMs;
     }
@@ -64,10 +38,7 @@ public class ChunkBasedFileRead {
 
         long chunkSize = fileSize / numThreads;
 
-        // Step 2: Shared array - each thread writes to its own index
-        int[] wordCounts = new int[numThreads];
-
-        // Step 3: Create and store threads
+        // Step 2: Create and store threads
         List<Thread> threads = new ArrayList<>();
 
         for (int i = 0; i < numThreads; i++) {
@@ -87,13 +58,8 @@ public class ChunkBasedFileRead {
                     raf.close();
 
                     String content = new String(buffer);
-                    String[] words = content.split("\\s+");
-
-                    wordCounts[idx] = words.length;
-
-                    System.out
-                            .println("Thread " + idx + " | Start: " + start + " | End: " + end + " | Words: "
-                                    + wordCounts[idx]);
+                    System.out.println(" ---Thread " + idx);
+                    System.out.println(content);
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -102,29 +68,22 @@ public class ChunkBasedFileRead {
             threads.add(th);
         }
 
-        // Step 4: Start all threads
+        // Step 3: Start all threads
         for (Thread th : threads)
             th.start();
 
-        // Step 5: wait for all threads
+        // Step 4: wait for all threads
         for (Thread th : threads) {
             try {
                 th.join();
             } catch (Exception e) {
             }
         }
-
-        // Step 6: combine results in main thread
-        long totalWords = 0;
-        for (int cnt : wordCounts)
-            totalWords += cnt;
-
         long endTime = System.nanoTime();
+
+        System.out.println("### Done");
+
         long durationMs = (endTime - startTime) / 1_000_000;
-
-        System.out.println("Words: " + totalWords);
-        System.out.println("Time: " + durationMs + " ms\n");
-
         return durationMs;
     }
 
