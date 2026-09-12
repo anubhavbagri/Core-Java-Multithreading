@@ -6,30 +6,30 @@ interface Notification {
 }
 
 abstract class Message {
-    String getMessage(int id){
+    String getMessage(int id) {
         return "order " + id + " sent";
     }
 }
 
 class EmailNotification extends Message implements Notification {
 
-    public void getChannel(){
+    public void getChannel() {
         System.out.println("Notify via email");
     }
 }
 
 class SlackNotification extends Message implements Notification {
 
-    public void getChannel(){
+    public void getChannel() {
         System.out.println("Notify via slack");
     }
 }
 
-public class MyMain{
-    public static void main(String[] args){
+public class MyMain {
+    public static void main(String[] args) {
         EmailNotification emailObj = new EmailNotification();
-        notifyObj.getChannel("Email");
-        System.out.println(notifyObj.getMessage(505));
+        emailObj.getChannel();
+        System.out.println(emailObj.getMessage(505));
 
         SlackNotification slackObj = new SlackNotification();
         slackObj.getChannel();
