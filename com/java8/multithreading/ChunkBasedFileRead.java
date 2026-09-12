@@ -3,6 +3,11 @@ package com.java8.multithreading;
 import java.io.*;
 import java.util.*;
 
+/*
+Read A Large Text File Using Multithreading and Chunk Based-> Processing.
+Hint: The sequence doesn't matter, reading faster is important
+*/
+
 public class ChunkBasedFileRead {
 
     // public static void generateLargeFile(String filename, long sizeInMB) {
@@ -124,10 +129,10 @@ public class ChunkBasedFileRead {
     }
 
     public static void main(String[] args) throws Exception {
-        String filename = "sample.txt";
+        String filename = "dummy.txt";
         // generateLargeFile("sample.txt", 1);
 
-        long singleTime = singleThreadedRead(filename);
+        // long singleTime = singleThreadedRead(filename);
 
         long multiTime2 = multiThreadedRead(filename, 2);
         long multiTime4 = multiThreadedRead(filename, 4);
@@ -135,7 +140,7 @@ public class ChunkBasedFileRead {
 
         // Compare
         System.out.println("\n========= PERFORMANCE COMPARISON =========");
-        System.out.println("Single thread:  " + singleTime + " ms");
+        // System.out.println("Single thread: " + singleTime + " ms");
         System.out.println("2 threads:      " + multiTime2 + " ms");
         System.out.println("4 threads:      " + multiTime4 + " ms");
         System.out.println("8 threads:      " + multiTime8 + " ms");
