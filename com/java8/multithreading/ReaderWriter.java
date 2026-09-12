@@ -18,7 +18,7 @@ public class ReaderWriter {
         } catch (Exception e) {
             return -1;
         } finally {
-            readLock.unlock();
+            readLock.unlock(); // always unlock in finally to prevent deadlock if exception occurs
             System.out.println(readerName + " done reading");
         }
     }
