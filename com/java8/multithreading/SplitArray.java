@@ -28,14 +28,14 @@ public class SplitArray {
                 s1.addAndGet(arr[i]); // thread safe increment
                 System.out.println("s1 = " + s1 + " " + Thread.currentThread().getName());
             }
-        });
+        }, "myThread-1");
 
         Thread th2 = new Thread(() -> {
             for (int i = mid; i < n; i++) {
                 s2.addAndGet(arr[i]); // thread safe increment
                 System.out.println("s2 = " + s2 + " " + Thread.currentThread().getName());
             }
-        });
+        }, "myThread-2");
 
         th1.start();
         th2.start();
@@ -51,7 +51,7 @@ public class SplitArray {
     }
 
     public static void main(String[] args) {
-        int a[] = { 5, 7, 3, 2, 1, 1, 6, 4, 8, 1 };
+        int a[] = { -2, 1, 2, 3, 4, -5 };
         System.out.println(new SplitArray().largerSum(a));
     }
 }
