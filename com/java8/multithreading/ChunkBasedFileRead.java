@@ -29,6 +29,8 @@ public class ChunkBasedFileRead {
     }
 
     public static long multiThreadedRead(String filename, int numThreads) throws IOException {
+        System.out.println("\n### Start ###");
+
         long startTime = System.nanoTime();
 
         // Step 1: Get file size
@@ -58,8 +60,17 @@ public class ChunkBasedFileRead {
                     raf.close();
 
                     String content = new String(buffer);
+
+                    String[] lines = content.split("\\n");
+                    StringBuilder sb = new StringBuilder();
+                    for (String line : lines) {
+                        String trimmed = line.trim();
+                        if (!trimmed.isEmpty())
+                            sb.append(trimmed).append("\n");
+                    }
+
                     System.out.println(" ---Thread " + idx);
-                    System.out.println(content);
+                    System.out.println(sb.toString());
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -81,7 +92,7 @@ public class ChunkBasedFileRead {
         }
         long endTime = System.nanoTime();
 
-        System.out.println("### Done");
+        System.out.println("### Done ###");
 
         long durationMs = (endTime - startTime) / 1_000_000;
         return durationMs;
