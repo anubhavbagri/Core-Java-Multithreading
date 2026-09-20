@@ -34,5 +34,14 @@ public class Main {
         Consumer<Integer> display = (num) -> System.out.println("Second largest: " + num);
         secondLargest.ifPresentOrElse(display, () -> System.out.println("not enough elements"));
 
+        // 3. find sum of all even numbers
+
+        int sum = numList.stream()
+                .filter(n -> n % 2 == 0)
+                .mapToInt(n -> n.intValue())
+                .sum();
+
+        System.out.println("Sum of even numbers: " + sum);
+
     }
 }
