@@ -1,20 +1,19 @@
 package com.java8.streams;
 
 import java.util.*;
+import java.util.function.*;
 
-// find only odd numbers from a stream
+// 1. find only odd numbers from a stream
 class A {
     public static void call() {
         List<Integer> numList = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
 
         // Predicate<Integer> isOdd = (n) -> n % 2 != 0;
+        // Consumer<Integer> print = (n) -> System.out.print(n + " ");
 
-        List<Integer> oddNum = numList.stream()
+        numList.stream()
                 .filter(n -> n % 2 != 0)
-                .toList();
-
-        System.out.println("Odd numbers: " + oddNum);
-
+                .forEach(n -> System.out.print(n + " "));
     }
 }
 
