@@ -23,5 +23,16 @@ public class Main {
 
         System.out.println(oddNumbers);
 
+        // 2. find the second largest number
+
+        Optional<Integer> secondLargest = numList.stream()
+                .distinct()
+                .sorted((a, b) -> Integer.compare(b, a))
+                .skip(1)
+                .findFirst();
+
+        Consumer<Integer> display = (num) -> System.out.println("Second largest: " + num);
+        secondLargest.ifPresentOrElse(display, () -> System.out.println("not enough elements"));
+
     }
 }
