@@ -10,6 +10,20 @@ import java.util.stream.Collectors;
 // can be pipelined to produce the desired result (often using lambda expressions)
 // no storage, only pipeline of functions
 
+class Employee {
+    String name;
+    int salary;
+
+    Employee(String name, int salary) {
+        this.name = name;
+        this.salary = salary;
+    }
+
+    public String toString() {
+        return name + " - " + salary;
+    }
+}
+
 public class Main {
     public static void main(String[] args) {
         List<Integer> numList = List.of(10, 20, 5, 8, 30, 25);
@@ -51,5 +65,17 @@ public class Main {
                 .orElseThrow();
 
         System.out.println("Max element: " + max);
+
+        // find second highest salaried employee
+
+        List<Employee> employees = Arrays.asList(
+                new Employee("Niraj", 70000),
+                new Employee("Neha", 50000),
+                new Employee("Aman", 30000));
+
+        Optional<Employee> secondHighest = employees.stream()
+                .sorted((a, b) -> Integer.compare(b.salary, a.salary))
+                .skip(1)
+                .findFirst();
     }
 }
