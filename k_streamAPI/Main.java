@@ -12,9 +12,9 @@ import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
-        // 1. filter Odd numbers
-
         List<Integer> numList = List.of(10, 20, 5, 8, 30, 25);
+
+        // 1. filter Odd numbers
 
         Predicate<Integer> checkOdd = (n) -> n % 2 != 0;
         List<Integer> oddNumbers = numList.stream()
@@ -43,5 +43,13 @@ public class Main {
 
         System.out.println("Sum of even numbers: " + sum);
 
+        // 4. find & display max element
+
+        int max = numList.stream()
+                .mapToInt(n -> n.intValue())
+                .max()
+                .orElseThrow();
+
+        System.out.println("Max element: " + max);
     }
 }
