@@ -70,25 +70,21 @@ class D {
     public static void call() {
         int n = 10;
 
-        Supplier<Integer> s = new Supplier<Integer>() {
-            int i = 1;
-
-            @Override
-            public Integer get() {
-                return i++;
+        for (int i = 2; i <= n; i++) {
+            int num = i;
+            Supplier<Boolean> s = () -> {
+                for (int j = 2; j <= num / 2; j++) {
+                    if (num % j == 0) {
+                        return false;
+                    }
+                }
+                return true;
+            };
+            if (s.get()) {
+                System.out.println(num);
             }
-        };
-
-        Predicate<Integer> isPrime = (num) -> num > 1 && IntStream.range(2, num)
-                .noneMatch(i -> num % i == 0);
-
-        Stream.generate(s)
-                .limit(n)
-                .filter(isPrime)
-                .forEach(System.out::println);
-
+        }
     }
-
 }
 
 public class MyMain {
