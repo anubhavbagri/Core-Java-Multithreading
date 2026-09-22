@@ -61,16 +61,16 @@ public class ChunkBasedFileRead {
 
                     String content = new String(buffer);
 
-                    String[] lines = content.split("\\n");
-                    StringBuilder sb = new StringBuilder();
-                    for (String line : lines) {
-                        String trimmed = line.trim();
-                        if (!trimmed.isEmpty())
-                            sb.append(trimmed).append("\n");
-                    }
+                    // String[] lines = content.split("\\n");
+                    // StringBuilder sb = new StringBuilder();
+                    // for (String line : lines) {
+                    // String trimmed = line.trim();
+                    // if (!trimmed.isEmpty())
+                    // sb.append(trimmed).append("\n");
+                    // }
 
                     System.out.println(" ---Thread " + idx);
-                    System.out.println(sb.toString());
+                    System.out.println(content);
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -105,17 +105,32 @@ public class ChunkBasedFileRead {
         // long singleTime = singleThreadedRead(filename);
 
         long multiTime2 = multiThreadedRead(filename, 2);
-        long multiTime4 = multiThreadedRead(filename, 4);
-        long multiTime8 = multiThreadedRead(filename, 8);
+        // long multiTime4 = multiThreadedRead(filename, 4);
+        // long multiTime8 = multiThreadedRead(filename, 8);
 
         // Compare
         System.out.println("\n========= PERFORMANCE COMPARISON =========");
         // System.out.println("Single thread: " + singleTime + " ms");
         System.out.println("2 threads:      " + multiTime2 + " ms");
-        System.out.println("4 threads:      " + multiTime4 + " ms");
-        System.out.println("8 threads:      " + multiTime8 + " ms");
+        // System.out.println("4 threads: " + multiTime4 + " ms");
+        // System.out.println("8 threads: " + multiTime8 + " ms");
 
         // int cores = Runtime.getRuntime().availableProcessors();
         // System.out.println("Available cores: " + cores);
     }
 }
+
+/*
+ * ### Start ###
+ * ---Thread 0
+ * hello world
+ * abcd
+ * xyz 12
+ * 
+ * ---Thread 1
+ * 3
+ * 459 pqr
+ * hi bye
+ * 
+ * ### Done ###
+ */
