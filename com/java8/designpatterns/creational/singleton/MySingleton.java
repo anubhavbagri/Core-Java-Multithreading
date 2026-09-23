@@ -1,4 +1,4 @@
-package com.java8.designpatterns.creational;
+package com.java8.designpatterns.creational.singleton;
 
 class A {
     static void display() {

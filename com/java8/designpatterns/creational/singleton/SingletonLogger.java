@@ -1,4 +1,4 @@
-package com.java8.designpatterns.creational;
+package com.java8.designpatterns.creational.singleton;
 
 enum LogLevel {
     DEBUG, INFO, WARN
@@ -29,7 +29,7 @@ public class SingletonLogger {
         Logger l3 = Logger.getLogger();
 
         l1.display(LogLevel.INFO, "hello world 1");
-        l2.display(LogLevel.DEBUG, "hello world 12");
-        l3.display(LogLevel.WARN, "hello world 123");
+        l2.display(LogLevel.DEBUG, "hello world 2");
+        l3.display(LogLevel.WARN, "hello world 3");
     }
 }
