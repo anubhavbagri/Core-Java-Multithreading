@@ -33,3 +33,8 @@ public class SingletonLogger {
         l3.display(LogLevel.WARN, "hello world 3");
     }
 }
+
+// Student impl = new Student("anubhav", 100)
+// Json obj = new Json("https://dummyjson.com/RESOURCE/?limit=10&skip=5&select=key1,key2,key3", "cricbuzz.com/api/v1/")
+// Json obj2 = new Json1(getJsonFile(int i, String s, boolean f), 100, "xyz")
+// Json obj3 = Builder.getJsonFile(3mb);
