@@ -30,11 +30,9 @@ class Truck implements Vehicle {
     }
 }
 
-// factory to create vehicles
-// handles all logic of creating vehicles - cleaner & easier to maintain
-// Provides a centralized place to hold & manage object creation based on any
-// business logic
-class VehicleFactory {
+// separate class whose only job is to centralize
+// and encapsulate object creation
+class SimpleVehicleFactory {
     public static Vehicle getVehicle(String vehicleType) {
         switch (vehicleType) {
             case "Bike":
@@ -51,11 +49,11 @@ public class Factory {
     public static void main(String[] args) {
         // VehicleFactory obj = new VehicleFactory();
 
-        Vehicle v1 = VehicleFactory.getVehicle("Bike");
+        Vehicle v1 = SimpleVehicleFactory.getVehicle("Bike");
         v1.start();
         v1.stop();
 
-        Vehicle v2 = VehicleFactory.getVehicle("Truck");
+        Vehicle v2 = SimpleVehicleFactory.getVehicle("Truck");
         v2.start();
         v2.stop();
     }
