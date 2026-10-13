@@ -59,5 +59,6 @@ public class Adapter {
 
         System.out.println("\n--- Using legacy gateway via Adapter ---");
         legacyCheckout.checkout(75.50, "USD");
+
     }
 }
